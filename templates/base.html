@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% block title %}
+    {% endblock %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
+    {% include "javascript.html" %}
+ 
+
+<body>
+{% block content %}
+{% endblock %}
+
+
+{% block user_based_javascript %}
+{% endblock %}
+</body>
+</html>

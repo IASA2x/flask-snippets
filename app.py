@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, flash, url_for, redirect, make_response
+from flask import Flask, render_template, request, flash, url_for, redirect, make_response, session
+
 
 app = Flask(__name__)
 
@@ -14,6 +15,19 @@ def executor(*data):
             yield func(*data)
     return wrapper
 
+def admin_only(func):
+    def wrapper(*args, **kwargs):
+        current_session = session.get("user", 0)
+        if current_session == 0:
+            return func(*args, **kwargs)
+        else:
+            return func(*args, **kwargs)
+    return wrapper
+
+@app.route("/form-creator")
+@admin_only
+def form_creator():
+    return render_template("form_creator.html", openvariable="{{", closevariable="}}")
 
 @app.route("/form", methods=['GET'])
 def form():

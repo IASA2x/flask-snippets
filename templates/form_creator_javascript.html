@@ -1,0 +1,30 @@
+<script>
+function rule(pName, price, type, options)  {
+    return {
+        price: ko.observable(price),
+        pName:  ko.observable(pName),
+        options: options, 
+        remove: function() {
+                    viewModel.rules.remove(this);
+                },
+        getName: function() {
+                    return this.name;
+                 },
+        getPrice: function() {
+                     return this.price;
+                  }
+    }
+}
+viewModel = {
+     title: ko.observable("Unnames"),
+     rules: ko.observableArray([
+     ]),
+     addRule: function() {
+        this.rules.push(new rule(
+                        1, 1, 1, 1
+                    ));
+     },
+    price: 0,
+};
+ko.applyBindings(viewModel);
+</script>

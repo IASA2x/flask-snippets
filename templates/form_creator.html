@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Form creator</h1>
+<h1> Observe inputs - <span data-bind="text: title"></span></h1>
+    <div data-bind="template: {name: 'formRules', foreach: rules }"></div>
+<script id="formRules" type="text/html">
+<div>
+<input data-bind="text: price"></label>
+<input data-bind="text: pName"></label>
+<button data-bind="click: remove">Remove</button>
+</div>
+</script>
+<form>
+</form>
+
+<h3>Add new item</h3>
+
+<form>
+    <div class="form-group">
+        <label>Название поля:</label>
+        <input type="text" name="field_name" data-bind="value: title" />
+    </div>
+</form>
+    <div class="form-group">
+        <label>Тип поля:</label>
+        <select name="field_type">
+            <option>Числовое значение</option>
+            <option>Выпадающий список</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+            <br/>
+            <div>
+                <label>Название</label>
+                <input name="input_price_name" id="name">
+            </div>
+            <div>
+                <label>Стоимость</label>
+                <input name="field-weight"/>
+            </div>
+            <br/>
+   </div>
+
+    <div class="form-group">
+        <br/>
+         <div>
+            <label>Название метки</label>
+            <input name="field-name"/>
+        </div>
+        <div>
+             <label>Стоимость</label>
+             <input name="field-name"/>
+         </div>
+         <br/>
+    </div>
+
+
+    <div class="form-group">
+        <label></label>
+        <button name="adder" data-bind="click: addRule">Добавить поле</button>
+    </div>
+{% endblock %}
+
+{% block user_based_javascript %} 
+{% include "form_creator_javascript.html" %}
+{% endblock %}
